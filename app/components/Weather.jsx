@@ -3,6 +3,9 @@ var WeatherMessage = require('WeatherMessage');
 var WeatherForm = require('WeatherForm');
 var openWeatherMap = require('openWeatherMap');
 
+// default openweather.map key
+//6a793141a3e6c84bf2dd55560cd1663d
+
 var Weather = React.createClass({
    getInitialState: function () {
     return {

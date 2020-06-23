@@ -26095,7 +26095,6 @@
 	  handleSearch: function handleSearch(location) {
 	    var that = this;
 
-	    debugger;
 	    this.setState({ isLoading: true });
 	    openWeatherMap.getTemp(location).then(function (temp) {
 	      that.setState({
@@ -26153,28 +26152,15 @@
 
 	var React = __webpack_require__(8);
 
-	// var WeatherMessage = React.createClass({
-	//     render: function () {
-	//       var location = this.props.location;
-	//       var temp = this.props.temp;
-	//       return (
-	//         <div>
-	//           <h2>In {location} the temperature is {temp}.</h2>
-	//         </div>
-	//       );
-	//     }
-	// });
-
 	var WeatherMessage = function WeatherMessage(_ref) {
 	  var temp = _ref.temp,
 	      location = _ref.location;
 
-	  //var {temp, location} = props; // ES6 destructuring
 	  return React.createElement(
 	    "div",
 	    null,
 	    React.createElement(
-	      "h2",
+	      "h3",
 	      { className: "text-center" },
 	      "In ",
 	      location,
@@ -26218,7 +26204,7 @@
 	        React.createElement('input', { type: 'text', ref: 'location', placeholder: 'Enter city' }),
 	        React.createElement(
 	          'button',
-	          { type: 'button', className: 'button expanded hollow' },
+	          { className: 'button expanded hollow' },
 	          'Get Weather'
 	        )
 	      )
