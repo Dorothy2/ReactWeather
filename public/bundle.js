@@ -25968,7 +25968,13 @@
 
 	  onSearch: function onSearch(e) {
 	    e.preventDefault();
-	    alert('Not yet wired up');
+	    var location = this.refs.location.value;
+
+	    var encodedLocation = encodeURIComponent(location);
+	    if (location.length > 0) {
+	      this.refs.location.value = '';
+	      window.location.hash = '#/?location=' + encodedLocation;
+	    }
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -26071,7 +26077,9 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      isLoading: false,
-	      errorMessage: undefined
+	      errorMessage: undefined,
+	      location: undefined,
+	      temp: undefined
 	    };
 	  },
 	  handleSearch: function handleSearch(location) {
@@ -26097,6 +26105,22 @@
 	        errorMessage: errorMessage
 	      });
 	    });
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var location = this.props.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = '#/';
+	    }
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps(newProps) {
+	    var location = newProps.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = '#/';
+	    }
 	  },
 	  render: function render() {
 	    // didn't retrieve variables this way
